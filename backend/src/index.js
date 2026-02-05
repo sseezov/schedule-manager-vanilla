@@ -1,6 +1,7 @@
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static';
 import path from 'node:path'
+import { teachers } from '../__fixtures__/teachers.js';
 
 const __dirname = import.meta.dirname;
 
@@ -15,8 +16,9 @@ fastify.register(fastifyStatic, {
 fastify.get('/', (request, reply) => {
   reply.sendFile('index.html');
 });
-fastify.get('/shedule', async function handler (request, reply) {
-  return { shedule: 'hehe' }
+
+fastify.get('/apiv1/teachers', (req, reply) => {
+  reply.send(teachers)
 })
 
 // Run the server!
