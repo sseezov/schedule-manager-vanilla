@@ -2,7 +2,7 @@ import MainCard from "./components/MainCard.js"
 import Teachers from "./pages/Teachers.js"
 
 export default function App() {
-  console.log('app renders');
+  
   return `
     <div class="main">
       <h1>Расписание занятий</h1>

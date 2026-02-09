@@ -1,5 +1,3 @@
-import Teachers from "../pages/Teachers";
-
 export default function MainCard({ name, description, href, component }) {
   
   return `

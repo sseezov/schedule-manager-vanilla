@@ -1,21 +1,22 @@
-export default function Teachers() {
-  fetch('/apiv1/teachers')
-    .then(response => {
+import TeacherName from "../components/ui/teacherName";
+
+export default async function Teachers() {
+  async function fetchTeachers() {
+    try {
+      const response = await fetch('/apiv1/teachers');
       if (!response.ok) {
-        throw new Error('Network response was not ok: ' + response.statusText);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      return response.json();
-    })
-    .then(data => {
-      // Work with the JSON data
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle network errors or errors thrown in the .then() block
-      console.error('There was a problem with the fetch operation:', error);
-    });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+  const teachers = await fetchTeachers()
 
 
-  // console.log(teachers)
-  return '<h1>TEACHERS PAGE</h1>'
+
+  const teachersElements = teachers.map((teacher) => TeacherName(teacher.fio)).join('\n')
+  return `<h1>${teachersElements}</h1>`
 }

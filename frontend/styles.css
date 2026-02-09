@@ -18,14 +18,14 @@ body {
 }
 
 /* === Заголовки === */
-.main > h1 {
+.main>h1 {
     color: #2c3e50;
     font-size: 28px;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.main > h2 {
+.main>h2 {
     color: #7f8c8d;
     font-size: 18px;
     margin-bottom: 30px;
@@ -48,14 +48,14 @@ body {
     padding: 25px;
     border-radius: 8px;
     text-decoration: none;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     border: 2px solid transparent;
     transition: 0.2s;
 }
 
 .mainCardsContainer a:hover {
     border-color: #3498db;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* === Заголовки внутри карточек === */
@@ -69,4 +69,20 @@ body {
     color: #666;
     font-size: 16px;
     font-weight: normal;
+}
+
+.teacherName {
+    cursor: pointer;
+    display: inline-block;
+    /* фон только по ширине текста */
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: background-color 0.15s ease;
+    white-space: nowrap;
+    /* чтобы текст не переносился */
+}
+
+.teacherName:hover {
+    background-color: #1e88e5;
+    color: white;
 }
