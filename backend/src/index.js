@@ -1,12 +1,19 @@
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static';
 import path from 'node:path'
-import { teachers } from '../__fixtures__/teachers.js';
+import fastifyPostgres from '@fastify/postgres';
+import { loadEnvFile } from 'node:process';
+
+loadEnvFile('.env');
 
 const __dirname = import.meta.dirname;
 
 const fastify = Fastify({
   logger: true
+})
+
+fastify.register(fastifyPostgres, {
+  connectionString: process.env.CONNECTION_STRING
 })
 
 fastify.register(fastifyStatic, {
@@ -18,7 +25,9 @@ fastify.get('/', (request, reply) => {
 });
 
 fastify.get('/apiv1/teachers', (req, reply) => {
-  reply.send(teachers)
+  fastify.pg.query(
+    'SELECT * from teachers',
+    (err, result) => reply.send(err || result.rows))
 })
 
 // Run the server!
