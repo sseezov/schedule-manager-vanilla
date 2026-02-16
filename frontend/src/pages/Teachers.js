@@ -17,6 +17,6 @@ export default async function Teachers() {
   console.log(123, teachers);
 
 
-  const teachersElements = teachers.map((teacher) => TeacherName(teacher.name)).join('\n')
+  const teachersElements = teachers.map((teacher) => TeacherName(teacher)).join('\n')
   return `<h1>${teachersElements}</h1>`
 }
