@@ -20,7 +20,7 @@ fastify.register(fastifyStatic, {
   root: path.join(__dirname, '../public'),
 });
 
-fastify.get('/', (request, reply) => {
+fastify.get('/publications', (request, reply) => {
   reply.sendFile('index.html');
 });
 
