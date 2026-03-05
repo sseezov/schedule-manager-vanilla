@@ -1,3 +1,5 @@
 import App from "./src/App.js";
+import render from "./src/render.js";
 
-document.querySelector('#app').innerHTML = App();
+const app = document.querySelector('#app')
+render(app, App())

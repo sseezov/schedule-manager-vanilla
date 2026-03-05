@@ -1,5 +1,5 @@
-export default function Main(){
+export default function Main(main){
   return `<div class="main">
-    Это главный контейнер
+    ${main}
   </div>`
 }
