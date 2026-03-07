@@ -1,5 +1,7 @@
-export default function Main(main){
+import Calls from "./Calls";
+
+export default function Main(){
   return `<div class="main">
-    ${main}
+    ${Calls()}
   </div>`
 }

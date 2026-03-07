@@ -1,11 +1,13 @@
 export const handlers = {
   id: 0,
-  getId: function () { return this.id++ }
-
+  getId: function () { return ++this.id }
 }
 
-export const init = () => document.querySelector('#app').addEventListener('click', (e) => {
-  console.log(e.target)
-  const { id } = e.target.dataset;
-  handlers[id]()
-})
+export const init = () => {
+  document.querySelector('#app').addEventListener('click', (e) => {
+    const { id } = e.target.dataset;
+    if (id) {
+      handlers[id]()
+    }
+  })
+}
