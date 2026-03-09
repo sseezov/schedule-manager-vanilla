@@ -21,7 +21,7 @@ document.addEventListener('click', async (event) => {
 });
 
 window.addEventListener('popstate', async () => {
-  const href = new URL(this.window.location.href);
+  const href = new URL(window.location.href);
 
   const app = document.querySelector('#app');
   app.innerHTML = await router[href.pathname.split('/')[1]]();
