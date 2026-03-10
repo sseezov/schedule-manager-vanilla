@@ -1,9 +1,24 @@
-import { getMondayDate } from "../lib/helpers";
+import { getMondayDate, sortLessonsByDays } from "../lib/helpers";
 
-export default function Schedule(){
+export default async function Schedule() {
+
   const teacherId = new URL(window.location.href).pathname.split('/')[2];
-  const date = getMondayDate()
-  console.log(teacherId, date);
-  // {teacherId: "170", date: "2026-03-09", publicationId: "cdb2a14c-a891-4f9f-b56c-7e8eb559c766"}
+  const date = getMondayDate();
+
+  async function fetchSchedule() {
+    try {
+      const response = await fetch(`/apiv1/teachers/lessons?teacher=${teacherId}&date=${date}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+  const { lessons } = await fetchSchedule();
+  console.log(123, sortLessonsByDays(lessons))
+
   return `<h1>${'Страница с расписанием'}</h1>`
 }

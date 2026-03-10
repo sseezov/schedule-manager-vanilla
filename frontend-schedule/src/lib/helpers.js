@@ -3,12 +3,21 @@ export function getMondayDate(offset = 0) {
   const day = today.getDay();
   const diff = day === 0 ? 6 : day - 1;
   
-  const monday = new Date(today);
-  monday.setDate(today.getDate() - diff + (offset * 7));
+  today.setDate(today.getDate() - diff + (offset * 7));
   
-  const year = monday.getFullYear();
-  const month = String(monday.getMonth() + 1).padStart(2, '0');
-  const dayOfMonth = String(monday.getDate()).padStart(2, '0');
-  
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const dayOfMonth = String(today.getDate()).padStart(2, '0');
+
   return `${year}-${month}-${dayOfMonth}`;
+}
+
+export const sortLessonsByDays = (lessons) => {
+  console.log('lessons: ', lessons);
+  const weekdays = Array.from(new Set(lessons.map((lesson) => lesson.weekday))).sort();
+  return weekdays.reduce((acc, day) => {
+    const lessonsByDay = lessons.filter(lesson => lesson.weekday === day);
+    console.log();
+    return { ...acc, [day]: lessonsByDay}
+  }, {})
 }
