@@ -1,4 +1,4 @@
-import DaySchedule from "../components/ui/DaySchedule";
+import LessonsTable from "../components/ui/DaySchedule";
 import { getMondayDate, sortLessonsByDays } from "../lib/helpers";
 
 export default async function Schedule() {
@@ -19,8 +19,16 @@ export default async function Schedule() {
     }
   }
   const { lessons } = await fetchSchedule();
+  const sortedLessons = sortLessonsByDays(lessons);
+  const days = Object.keys(sortedLessons)
 
-  return `<h1>${'Страница с расписанием'}</h1>
-    ${DaySchedule(sortLessonsByDays(lessons)[1])}
+  return `
+  <div class="schedule-dashboard">
+  <h1>${'Страница с расписанием'}</h1>
+
+  <div class="schedule-grid">
+  ${days.map((day) => LessonsTable(sortedLessons[day]))}
+  </div>
+  </div>
   `
 }

@@ -1,7 +1,6 @@
 import MainCard from "./components/MainCard.js"
 
-export default function App() {
-  
+export default function App() {  
   return `
     <div class="main">
       <h1>Расписание занятий</h1>

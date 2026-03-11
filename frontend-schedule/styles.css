@@ -86,3 +86,150 @@ body {
     background-color: #1e88e5;
     color: white;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.schedule-dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f5;
+}
+
+/* Заголовок */
+.schedule-header {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-btn {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.current-week {
+  font-size: 0.85rem;
+}
+
+/* Сетка - 3 колонки */
+.schedule-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 12px;
+  align-items: start;
+  overflow-y: auto;
+}
+
+/* Карточка дня */
+.schedule-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  width: 100%;
+}
+
+.card-header {
+  padding: 6px 8px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card-date {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* Таблица */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.schedule-table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.schedule-table tr:last-child {
+  border-bottom: none;
+}
+
+.schedule-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}
+
+.time-cell {
+  width: 50px;
+  font-weight: 500;
+  white-space: nowrap;
+  background: #fafafa;
+  border-right: 1px solid #eee;
+  text-align: center;
+}
+
+.info-cell {
+  width: auto;
+}
+
+.subject {
+  font-weight: 600;
+  margin-bottom: 2px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.groups {
+  color: #444;
+  margin-bottom: 2px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.teacher {
+  color: #666;
+  font-size: 0.7rem;
+}
+
+/* Пустой день */
+.empty-day {
+  padding: 20px 8px;
+  text-align: center;
+  color: #999;
+  font-size: 0.8rem;
+}
