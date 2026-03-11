@@ -10,38 +10,32 @@ const router = {
   'error': ErrorComponent
 }
 
-const findRoute = (routes) => {
-  if (router[routes.at(-1)]) {
-    return router[routes.at(-1)]()
-  }
-  return router['error']()
-}
-
-export const init = async () => {
-  const href = new URL(window.location.href);
-
+export const mountRoute = async (url) => {
   const app = document.querySelector('#app');
+  const href = new URL(url || window.location.href);
   const routes = href.pathname.split('/');
-  console.log('routes ', routes);
 
-  app.innerHTML = await findRoute(routes);
+  let step = -1;
+  if (routes.at(step) === '') {
+    step -= 1;
+  }
+  if (router[routes.at(step)]) {
+    app.innerHTML = await router[routes.at(step)]();
+    return; 
+  }
+  app.innerHTML = router['error']();
+  return;
 }
 
 document.addEventListener('click', async (event) => {
   const link = event.target.closest('a');
   if (link) {
     event.preventDefault()
-    const href = new URL(link.href);
-    history.pushState(undefined, undefined, href)
-
-    const app = document.querySelector('#app');
-    app.innerHTML = await router[href.pathname.split('/').at(-1)]();
+    history.pushState(undefined, undefined, link.href)
+    mountRoute(link.href)
   }
 });
 
 window.addEventListener('popstate', async () => {
-  const href = new URL(window.location.href);
-
-  const app = document.querySelector('#app');
-  app.innerHTML = await router[href.pathname.split('/')[1]]();
+  mountRoute()
 });

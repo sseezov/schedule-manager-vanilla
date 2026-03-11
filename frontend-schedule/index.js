@@ -1,3 +1,3 @@
-import { init } from "./src/router.js";
+import { mountRoute } from "./src/router.js";
 
-init()
+mountRoute();
