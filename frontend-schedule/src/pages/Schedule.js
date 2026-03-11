@@ -19,7 +19,6 @@ export default async function Schedule() {
     }
   }
   const { lessons } = await fetchSchedule();
-  console.log(123, sortLessonsByDays(lessons))
 
   return `<h1>${'Страница с расписанием'}</h1>
     ${DaySchedule(sortLessonsByDays(lessons)[1])}
