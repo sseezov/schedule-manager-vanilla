@@ -1,4 +1,3 @@
-import App from "./src/app.js";
+import { init } from "./src/router.js";
 
-const app = document.querySelector('#app');
-app.innerHTML = App()
+init()
