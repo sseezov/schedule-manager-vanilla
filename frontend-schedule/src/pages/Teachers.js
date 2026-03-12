@@ -13,8 +13,9 @@ export default async function Teachers() {
       console.error('Fetch error:', error);
     }
   }
-  const teachers = await fetchTeachers()
-
-  const teachersElements = teachers.map((teacher) => TeacherName(teacher)).join('')
-  return `<h1>${teachersElements}</h1>`
+  const teachers = await fetchTeachers();
+  
+  const teachersElements = teachers.map((teacher) => TeacherName(teacher)).join('\n')
+  console.log(teachersElements);
+  return `<div>${teachersElements}</div>`
 }

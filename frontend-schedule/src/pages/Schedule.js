@@ -27,7 +27,7 @@ export default async function Schedule() {
   <h1>${'Страница с расписанием'}</h1>
 
   <div class="schedule-grid">
-  ${days.map((day) => LessonsTable(sortedLessons[day]))}
+  ${days.map((day) => LessonsTable(sortedLessons[day])).join('\n')}
   </div>
   </div>
   `

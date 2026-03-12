@@ -5,7 +5,7 @@ export default function LessonsTable(dayLessons) {
   <div class="schedule-card">
   <table class="schedule-table">
     <tbody>
-      ${dayLessons.map((lesson) => LessonSchedule(lesson))}
+      ${dayLessons.map((lesson) => LessonSchedule(lesson)).join('\n')}
     </tbody>
   </table>
   </div>

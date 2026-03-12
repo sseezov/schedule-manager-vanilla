@@ -6,25 +6,42 @@ import ErrorComponent from "./components/ErrorComponent.js";
 console.log('load');
 
 const router = {
-  'teachers': Teachers,
-  'lessons': Schedule,
-  'publications': App,
+  'publications': {
+    'component': App,
+    'teachers': {
+      'component': Teachers,
+      'dynamicRoute': {
+        'lessons': {
+          'component': Schedule
+        }
+      }
+    }
+  },
   'error': ErrorComponent
+}
+
+const navigate = (routes) => {
+  let current = router;
+
+  for (const segment of routes) {
+    if (current[segment]) {
+      current = current[segment];
+    }
+    else if (current['dynamicRoute']) {
+      current = current['dynamicRoute'];
+    }
+  }
+  return current.component || router.error;
 }
 
 export const mountRoute = async () => {
   const href = (window.location.href).replace(/\/+$/, '');
   if (window.location.href.at(-1) === '/') history.replaceState(undefined, undefined, href);
+  const routes = href.split('/').slice(3);
 
+  const element = navigate(routes);
   const app = document.querySelector('#app');
-  const routes = href.split('/');
-
-  if (router[routes.at(-1)]) {
-    app.innerHTML = await router[routes.at(-1)]();
-    return;
-  }
-  app.innerHTML = router['error']();
-  return;
+  app.innerHTML = await element();
 }
 
 document.addEventListener('click', async (event) => {
