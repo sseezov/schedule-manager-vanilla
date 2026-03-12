@@ -22,14 +22,15 @@ const router = {
 
 const navigate = (routes) => {
   let current = router;
-
+  
   for (const segment of routes) {
     if (current[segment]) {
-      current = current[segment];
+      current = current[segment]; 
     }
     else if (current['dynamicRoute']) {
       current = current['dynamicRoute'];
     }
+    else return router.error;
   }
   return current.component || router.error;
 }
