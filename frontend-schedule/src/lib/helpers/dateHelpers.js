@@ -12,14 +12,14 @@ export function getMondayDate(offset = 0) {
   return `${year}-${month}-${dayOfMonth}`;
 }
 
-export const sortLessonsByDays = (lessons) => {
-  console.log('lessons: ', lessons);
-  const weekdays = Array.from(new Set(lessons.map((lesson) => lesson.weekday))).sort();
-  return weekdays.reduce((acc, day) => {
-    const lessonsByDay = lessons.filter(lesson => lesson.weekday === day).sort((a, b) =>
-      a['lesson'] > b['lesson'] ? 1 : -1
-    );
-    return { ...acc, [day]: lessonsByDay }
-  }, {})
+export function calcDate(startOfWeek, dayOfWeek) {
+  const result = new Date(startOfWeek);
+  
+  result.setDate(result.getDate() + (dayOfWeek - 1));
+  
+  const day = String(result.getDate()).padStart(2, '0');
+  const month = String(result.getMonth() + 1).padStart(2, '0');
+  const year = result.getFullYear();
+  
+  return `${day}.${month}.${year}`;
 }
-
