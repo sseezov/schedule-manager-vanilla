@@ -1,5 +1,5 @@
 start-server:
-	node backend/src/index.js
+	cd backend && node src/index.js
 
 start-front:
 	cd frontend && npm run dev

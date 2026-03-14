@@ -1,4 +1,4 @@
-import { calcDate, getMondayDate } from "../../lib/helpers/dateHelpers";
+import { calcDate, getMondayDate } from "../../../lib/helpers/dateHelpers";
 import Lesson from "./Lesson";
 
 export default function LessonsTable(dayLessons) {

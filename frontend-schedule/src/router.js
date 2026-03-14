@@ -1,5 +1,5 @@
-import Teachers from "./pages/Teachers.js";
-import Schedule from "./pages/Schedule.js";
+import Teachers from "./pages/teachers/Page.js";
+import Schedule from "./pages/schedule/Page.js";
 import App from "./App.js"
 import ErrorComponent from "./components/ErrorComponent.js";
 

@@ -1,4 +1,4 @@
-import TeacherName from "../components/ui/teacherName";
+import TeacherName from "./components/TeacherName";
 
 export default async function Teachers() {
   async function fetchTeachers() {

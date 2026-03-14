@@ -1,6 +1,6 @@
-import DaySchedule from "../components/ui/DaySchedule";
-import { getMondayDate } from "../lib/helpers/dateHelpers";
-import { sortLessonsByDays } from "../lib/helpers/sortHelpers";
+import DaySchedule from "./components/DaySchedule";
+import { getMondayDate } from "../../lib/helpers/dateHelpers";
+import { sortLessonsByDays } from "../../lib/helpers/sortHelpers";
 
 export default async function Schedule() {
 

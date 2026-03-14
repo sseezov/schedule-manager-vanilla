@@ -31,7 +31,6 @@ fastify.get('/apiv1/teachers', (req, reply) => {
 })
 
 fastify.get('/apiv1/teachers/lessons', (req, reply) => {
-	console.log(123,123);
 	reply.send(`{
     "startDate": "2025-12-15T00:00:00Z",
     "endDate": "2025-12-21T00:00:00Z",
