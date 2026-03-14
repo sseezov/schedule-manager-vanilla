@@ -1,0 +1,46 @@
+/* DaySchedule.module.css */
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  width: 100%;
+}
+
+.header {
+  padding: 6px 8px;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subheader {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.date {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.table tr {
+  border-bottom: 1px solid #eee;
+}
+
+.table tr:last-child {
+  border-bottom: none;
+}
+
+.table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}

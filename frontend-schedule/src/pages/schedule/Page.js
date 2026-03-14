@@ -1,4 +1,4 @@
-import DaySchedule from "./components/DaySchedule";
+import DayTable from "./components/DayTable";
 import { getMondayDate } from "../../lib/helpers/dateHelpers";
 import { sortLessonsByDays } from "../../lib/helpers/sortHelpers";
 
@@ -27,7 +27,7 @@ export default async function Schedule() {
     <div class="schedule-dashboard">
       <h1>${'Страница с расписанием'}</h1>
       <div class="schedule-grid">
-        ${days.map((day) => DaySchedule({ lessons: sortedLessons[day], startDate })).join('\n')}
+        ${days.map((day) => DayTable({ lessons: sortedLessons[day], startDate })).join('\n')}
       </div>
     </div>
   `

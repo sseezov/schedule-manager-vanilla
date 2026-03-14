@@ -1,5 +1,6 @@
-import { calcDate, getMondayDate } from "../../../lib/helpers/dateHelpers";
-import Lesson from "./Lesson";
+import { calcDate } from "../../../lib/helpers/dateHelpers";
+import styles from './DayTable.module.css';
+import Lesson from "./LessonRow";
 
 export default function LessonsTable(dayLessons) {
   const weekdays = {
@@ -16,12 +17,12 @@ export default function LessonsTable(dayLessons) {
   const weekdayIndex = lessons[0].weekday
 
   return `
-  <div class="schedule-card"> 
-    <div class="card-header">
-      <h3>${weekdays[weekdayIndex]}</h3>
-      <span class="card-date">${calcDate(startDate, weekdayIndex)}</span>
+  <div class="${styles.card}">
+    <div class="${styles.header}">
+      <h3 class="${styles.subheader}">${weekdays[weekdayIndex]}</h3>
+      <span class="${styles.date}">${calcDate(startDate, weekdayIndex)}</span>
     </div>
-    <table class="schedule-table">
+    <table class="${styles.table}">
       <tbody>
         ${lessons.map((lesson) => Lesson(lesson)).join('\n')}
       </tbody>
