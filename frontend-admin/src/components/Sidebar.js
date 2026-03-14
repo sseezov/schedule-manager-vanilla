@@ -1,6 +1,6 @@
-import SidebarCategory from "./ui/SidebarCategory.js";
+import SidebarCategory from './ui/SidebarCategory.js'
 
-export default function Sidebar(){
+export default function Sidebar() {
   return `<ol class="sidebar">
       ${SidebarCategory('Звонки')}
       ${SidebarCategory('Группы')}

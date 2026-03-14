@@ -1,3 +1,3 @@
-export default function Calls(){
+export default function Calls() {
   return `<h1>Звонки</h1>`
 }

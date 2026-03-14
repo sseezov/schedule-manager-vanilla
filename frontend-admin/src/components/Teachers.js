@@ -1,12 +1,12 @@
-import { handlers } from "../core/init";
-import Modal from "./ui/Modal";
+import { handlers } from '../core/init'
+import Modal from './ui/Modal'
 
 export default function Teachers() {
   const onClick = () => {
-    const modal = document.querySelector('.modal-teachers');
+    const modal = document.querySelector('.modal-teachers')
     modal.classList.remove('hidden')
   }
-  const id = handlers.getId();
+  const id = handlers.getId()
   handlers[id] = onClick
 
   return `

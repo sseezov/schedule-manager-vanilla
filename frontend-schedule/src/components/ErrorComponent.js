@@ -1,3 +1,3 @@
-export default function ErrorComponent(){
+export default function ErrorComponent() {
   return 'error'
 }

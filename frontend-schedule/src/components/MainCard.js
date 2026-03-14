@@ -1,4 +1,4 @@
-export default function MainCard({ name, description, href }) {  
+export default function MainCard({ name, description, href }) {
   return `
     <a href=${href}
       <h1>${name}</h1>

@@ -1,37 +1,37 @@
 import Fastify from 'fastify'
-import fastifyStatic from '@fastify/static';
+import fastifyStatic from '@fastify/static'
 import path from 'node:path'
-import fastifyPostgres from '@fastify/postgres';
-import { loadEnvFile } from 'node:process';
+import fastifyPostgres from '@fastify/postgres'
+import { loadEnvFile } from 'node:process'
 
-loadEnvFile('.env');
+loadEnvFile('.env')
 
-const __dirname = import.meta.dirname;
+const __dirname = import.meta.dirname
 
 const fastify = Fastify({
-	logger: true
+  logger: true,
 })
 
 fastify.register(fastifyPostgres, {
-	connectionString: process.env.CONNECTION_STRING
+  connectionString: process.env.CONNECTION_STRING,
 })
 
 fastify.register(fastifyStatic, {
-	root: path.join(__dirname, '../public'),
-});
+  root: path.join(__dirname, '../public'),
+})
 
 fastify.get('/publications', (request, reply) => {
-	reply.sendFile('index.html');
-});
+  reply.sendFile('index.html')
+})
 
 fastify.get('/apiv1/teachers', (req, reply) => {
-	fastify.pg.query(
-		'SELECT * from teachers',
-		(err, result) => reply.send(err || result.rows))
+  fastify.pg.query(
+    'SELECT * from teachers',
+    (err, result) => reply.send(err || result.rows))
 })
 
 fastify.get('/apiv1/teachers/lessons', (req, reply) => {
-	reply.send(`{
+  reply.send(`{
     "startDate": "2025-12-15T00:00:00Z",
     "endDate": "2025-12-21T00:00:00Z",
     "teacher": {
@@ -986,8 +986,9 @@ fastify.get('/apiv1/teachers/lessons', (req, reply) => {
 
 // Run the server!
 try {
-	await fastify.listen({ port: 3000 })
-} catch (err) {
-	fastify.log.error(err)
-	process.exit(1)
+  await fastify.listen({ port: 3000 })
+}
+catch (err) {
+  fastify.log.error(err)
+  process.exit(1)
 }

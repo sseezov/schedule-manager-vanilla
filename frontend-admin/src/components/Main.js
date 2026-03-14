@@ -1,6 +1,6 @@
-import Calls from "./Calls";
+import Calls from './Calls'
 
-export default function Main(){
+export default function Main() {
   return `<div class="main">
     ${Calls()}
   </div>`
